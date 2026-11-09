@@ -17,3 +17,14 @@
 
 ## Техникалық негіз
 Next.js 14, React 18, TypeScript, Supabase клиент кітапханасы (әзірге қосылмаған).
+
+## Supabase авторизациясын қосу (әкімші)
+1. Supabase жобасында `supabase/SCHEMA_STARTER.sql` файлын SQL Editor арқылы бір рет орындаңыз.
+2. Supabase → Authentication → Users → Add user арқылы әкімші email мен уақытша құпиясөзін жасаңыз.
+3. `supabase/CREATE_FIRST_ADMIN.sql` ішіндегі `admin@school.kz` мәнін сол email-ге ауыстырып, SQL Editor-де орындаңыз.
+4. Vercel → Project → Settings → Environment Variables бөлімінде мына екі айнымалыны Production, Preview және Development үшін қосыңыз:
+   - `NEXT_PUBLIC_SUPABASE_URL`
+   - `NEXT_PUBLIC_SUPABASE_ANON_KEY` (Supabase publishable/anon key)
+5. Redeploy жасаңыз. Сайттағы `/login` бетіне әкімші email мен құпиясөзін енгізіп, «Әкімші» рөлін таңдаңыз.
+
+**Қауіпсіздік:** `service_role` кілтін ешқашан `NEXT_PUBLIC_` айнымалысына салмаңыз және браузерге жарияламаңыз. Алғашқы әкімші аккаунтын тек сенімді адам жасауы керек. Қазіргі оқушылар беті мен панельдегі сандар әлі демо деректер; нақты CRUD және Excel импорт серверге қосылған жоқ.
